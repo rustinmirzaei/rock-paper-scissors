@@ -2,8 +2,9 @@ import glob
 import os
 import sys 
 
+ 
 import keyboard
-
+from colorama import Fore, Back
 
 
 wallpapers = glob.glob("/home/rustin/Pictures/wallpapers/*.jpg")
@@ -14,19 +15,10 @@ def menu(index=0):
     os.system('clear')
     for i, wallpaper in enumerate(wallpapers):
         if i == index: 
-            print(f'> {wallpaper} <')
+            print(f'{Back.LIGHTBLACK_EX}{wallpaper}{Back.RESET} <')
         else:
-            print(f'{wallpaper}')
+            print(f'{Fore.YELLOW}{wallpaper}{Fore.RESET}')
     os.system(f'feh --bg-scale {wallpapers[index]}')
-
-def get_pos(index):
-    global index
-    if index <= 0:
-        index = 0
-    elif index >= len_walls - 1:
-        index = len_walls - 1
-    return index
-
 
 def up():
     global index 
